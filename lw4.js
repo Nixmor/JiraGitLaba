@@ -16,23 +16,21 @@ async function fetchData() {
     }
 }
 
-// Функція для парсингу HTML і збереження даних
 async function parseAndSave() {
     const html = await fetchData();
     if (!html) return;
 
     const $ = cheerio.load(html);
 
-    // Масив для збереження новин
     const newsData = [];
 
-    // Парсинг заголовків новин (для прикладу використано селектори новин)
+   
     $('.results-league-head').each((index, element) => {
         const title = $(element).text().trim();
         const link = $(element).find('a').attr('href');
-        
+        const link2 = $(element).find('a').attr('href');
+        const link3 = $(element).find('a').attr('href');
 
-        // Додаємо новину до масиву
         newsData.push({
             title: title,
             link: link ? `https://sport.ua${link}` : '',
